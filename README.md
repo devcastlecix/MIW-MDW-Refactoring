@@ -255,3 +255,14 @@ Experto en Información => la clase responsable es la que tiene la información
 
 ![claseCustomer](/out/docs/diagrams/src/movies21/movies.svg)
 
+## <em>**Versión 22.**</em> Clase “Customer” - métodos “statement()”, “getTotalCharge()”, “getTotalFrequentRenterPoints()”
+
+### <em>**Smell Code:**</em>
+- Duplicación de bucles al recorrer la lista `rentals`.
+- Violación de DRY (Don’t Repeat Yourself) en cada método.
+- Variable temporal innecesaria 
+
+### <em>**Refactoring:**</em>
+- **Extract Method** : Se crea `summarizeRentals(...)` para unificar la lógica de iteración en metodos `statement()`,`getTotalCharge()` y `getTotalFrequentRenterPoints()`.
+- Parametrización con una **función** (`BiFunction<T,Rental,T>`) que define el proceso específico (sumar cargos, puntos, etc.).
+- Eliminar variables innecesarios y reemplazar while por for en `summarizeRentals(...)`

@@ -1,7 +1,6 @@
 package usantatecla.movies.v22;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -43,12 +42,10 @@ public class Customer {
 		return summarizeRentals(0, (total, rental) -> total + rental.getFrequentRenterPoints());
 	}
 
-	private <T> T summarizeRentals(T result, BiFunction<T, Rental, T> process) {
-		Iterator<Rental> rentals = this.rentals.iterator();
-		while (rentals.hasNext()) {
-			Rental each = rentals.next();
-			result = process.apply(result, each);
+	private <T> T summarizeRentals(T summary, BiFunction<T, Rental, T> process) {
+		for (Rental rental : this.rentals) {
+			summary = process.apply(summary, rental);
 		}
-		return result;
+		return summary;
 	}
 }
