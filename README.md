@@ -267,6 +267,8 @@ Experto en Información => la clase responsable es la que tiene la información
 - Parametrización con una **función** (`BiFunction<T,Rental,T>`) que define el proceso específico (sumar cargos, puntos, etc.).
 - Eliminar variables innecesarios y reemplazar while por for en `summarizeRentals(...)`
 
+![claseCustomer](/out/docs/diagrams/src/movies22/movies.svg)
+
 ## <em>**Versión 23.**</em> Clase “Customer” - método “statement()” y Clase “Rental” - método “getTitle()”
 
 ### <em>**Smell Code:**</em>
