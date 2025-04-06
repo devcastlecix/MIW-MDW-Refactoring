@@ -1,9 +1,6 @@
 package usantatecla.movies.v23;
 
 import org.junit.Test;
-import usantatecla.movies.v23.Customer;
-import usantatecla.movies.v23.Movie;
-import usantatecla.movies.v23.Rental;
 
 import static org.junit.Assert.assertEquals;
 

@@ -292,4 +292,9 @@ Experto en Información => la clase responsable es la que tiene la información
 
 ![claseCustomer](/out/docs/diagrams/src/movies24/movies.svg)
 
+## <em>**Versión 25.**</em> Clase “CustomerTest“
+
+
+### <em>**Refactoring:**</em>
+- Dividir CustomerTest en diferentes archivos de pruebas.
 

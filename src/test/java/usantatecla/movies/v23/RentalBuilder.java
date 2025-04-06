@@ -1,8 +1,5 @@
 package usantatecla.movies.v23;
 
-import usantatecla.movies.v23.Movie;
-import usantatecla.movies.v23.Rental;
-
 public class RentalBuilder {
 
 	private Movie movie;

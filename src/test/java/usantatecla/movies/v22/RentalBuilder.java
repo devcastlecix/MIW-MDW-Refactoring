@@ -1,7 +1,5 @@
 package usantatecla.movies.v22;
 
-import usantatecla.movies.v22.Movie;
-import usantatecla.movies.v22.Rental;
 
 public class RentalBuilder {
 
