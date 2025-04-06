@@ -260,9 +260,21 @@ Experto en Información => la clase responsable es la que tiene la información
 ### <em>**Smell Code:**</em>
 - Duplicación de bucles al recorrer la lista `rentals`.
 - Violación de DRY (Don’t Repeat Yourself) en cada método.
-- Variable temporal innecesaria 
+- Variable temporal innecesaria
 
 ### <em>**Refactoring:**</em>
 - **Extract Method** : Se crea `summarizeRentals(...)` para unificar la lógica de iteración en metodos `statement()`,`getTotalCharge()` y `getTotalFrequentRenterPoints()`.
 - Parametrización con una **función** (`BiFunction<T,Rental,T>`) que define el proceso específico (sumar cargos, puntos, etc.).
 - Eliminar variables innecesarios y reemplazar while por for en `summarizeRentals(...)`
+
+## <em>**Versión 23.**</em> Clase “Customer” - método “statement()” y Clase “Rental” - método “getTitle()”
+
+### <em>**Smell Code:**</em>
+- **Dependencia innecesaria** entre `Customer` y `Movie` (violación de la Ley de Demeter: `Customer -> Rental -> Movie`).
+- **Acoplamiento excesivo**: el método `statement()` accedía al título de la película llamando a `getMovie().getTitle()`.
+
+### <em>**Refactoring:**</em>
+- **Encapsulate Field** & **Move Method**: Se introduce `Rental.getTitle()` para que `Customer` no necesite acceder directamente a `Movie`.
+- **Eliminación de dependencia**: en `statement()`, se llama a `rental.getTitle()` en lugar de `rental.getMovie().getTitle()`.
+
+![claseCustomer](/out/docs/diagrams/src/movies23/movies.svg)
