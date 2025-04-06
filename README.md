@@ -278,3 +278,18 @@ Experto en Información => la clase responsable es la que tiene la información
 - **Eliminación de dependencia**: en `statement()`, se llama a `rental.getTitle()` en lugar de `rental.getMovie().getTitle()`.
 
 ![claseCustomer](/out/docs/diagrams/src/movies23/movies.svg)
+
+## <em>**Versión 24.**</em> Clase “Movie“ y "Price"
+
+### <em>**Smell Code:**</em>
+- Clase `Movie` delega toda su lógica en `Price` y sus subclases (`RegularPrice`, `NewReleasePrice`, `ChildrenPrice`).
+- Dificultad para extender o cambiar reglas: se debe modificar `Movie` (p. ej. setPrice) y crear/ajustar subclases de `Price`.
+
+### <em>**Refactoring:**</em>
+- **Inline Class** / “Collapse Hierarchy”:
+  - Se crean subclases concretas de `Movie` (`RegularMovie`, `ChildrenMovie`, `NewReleaseMovie`) que contienen la lógica de `Price` y sus derivadas.
+  - Se elimina por completo la clase `Price` y todas sus subclases.
+
+![claseCustomer](/out/docs/diagrams/src/movies24/movies.svg)
+
+

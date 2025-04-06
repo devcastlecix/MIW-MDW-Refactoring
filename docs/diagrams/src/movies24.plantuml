@@ -1,0 +1,65 @@
+@startuml movies
+
+class Customer {
+    - String name;
+    - List<Rental> rentals;
+    + Customer(String name)
+    + void addRental(Rental rental)
+    + String getName()
+    + String statement()
+    - double getTotalCharge()
+    - int getTotalFrequentRenterPoints()
+    - <T> T summarizeRentals(T summary, BiFunction<T, Rental, T> process)
+}
+
+class Rental {
+    - Movie movie;
+    - int daysRented;
+    + Rental(Movie movie, int daysRented)
+    + int getDaysRented()
+    + double getCharge()
+    + int getFrequentRenterPoints()
+    + Movie getMovie()
+    + String getTitle()
+}
+
+abstract class Movie {
+    - String title;
+    + Movie(String title)
+    + abstract double getCharge(int daysRented)
+    + int getFrequentRenterPoints(int daysRented)
+    + String getTitle()
+}
+
+class RegularMovie {
+{static}- static final double CHARGE = 2.0
+{static}- static final double EXTRA_CHARGE = 1.5
+{static}- static final int DAYS_RENTED_THRESHOLD = 2
+    + RegularMovie(String title)
+    + double getCharge(int daysRented)
+}
+
+class ChildrenMovie {
+{static}- static final double CHARGE = 1.5
+{static}- static final double EXTRA_CHARGE = 1.5
+{static}- static final int DAYS_RENTED_THRESHOLD = 3
+    + ChildrenMovie(String title)
+    + double getCharge(int daysRented)
+}
+
+class NewReleaseMovie {
+{static}- static final double CHARGE = 3
+{static}- static final int DAYS_RENTED_THRESHOLD = 1
+{static}- static final int FREQUENT_RENTER_POINTS = 2
+    + NewReleaseMovie(String title)
+    + double getCharge(int daysRented)
+    + int getFrequentRenterPoints(int daysRented)
+}
+
+Customer o-down-> Rental : ""
+Rental -down-> Movie : ""
+Movie <|-down- RegularMovie
+Movie <|-down- ChildrenMovie
+Movie <|-down- NewReleaseMovie
+
+@enduml
